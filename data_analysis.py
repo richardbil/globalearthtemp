@@ -13,11 +13,7 @@ print(Summary)
 print(global_temp_country.shape)
 print(global_temp_country.dtypes)
 
-#so, first we will want to clean the data a little bit, but because this is a free time whatever
-#project, we want to do it as lazy as possible and maybe just stop after doing half of it because why not 
-
-#okay, so lets see first, where data is missing, we suppose that information about countrys and dates is not missing, 
-#but temeperature data ist so
+#So, first we probably want to clean the data and delete the countrys where too much data is missing
 # first, well differentiate between numeric and non numeric cols 
 
 numeric_cols = global_temp_country.select_dtypes(include=['number']).columns
@@ -34,11 +30,22 @@ global_temp_country_withoutNaN = global_temp_country.dropna()
 print(global_temp_country_withoutNaN.describe())
 print(global_temp_country_withoutNaN.shape)
 
-#
-countrygrouped1 = global_temp_country.groupby(global_temp_country.dt.dt.year)
+#calculate the percentage of missing data
+missing_percentage = global_temp_country.groupby('Country').apply(lambda x: x['AverageTemperature'].isnull().mean())
+print(missing_percentage)
 
-countrygrouped = global_temp_country.groupby(global_temp_country.Country, global_temp_country.dt)
+#get countries with more than 20 % missing
+countries_to_drop = missing_percentage[missing_percentage > 0.2].index
+print(countries_to_drop)
 
-print(countrygrouped.get_group('Germany'))
-print(countrygrouped['AverageTemperature'].max())
+global_temp_country = global_temp_country[~global_temp_country['Country'].isin(countries_to_drop)]
+global_temp_country.to_csv('cleaned_data_country.csv', index=False)
 
+#okay, so lets organise the countrys by sorting by biggest growth in yearly averages 
+
+country_cleaned = pd.read_csv('/home/richard/Documents/Projects/globalearthtemp/cleaned_data_country.csv')
+
+country_cleaned['Date'] = pd.to_datetime(country_cleaned['Date'])
+country_cleaned['year'] = country_cleaned['Date'].dt.year
+yearly_means = country_cleaned.groupby(['Country', 'year'])['AverageTemperature'].mean().reset_index()
+print(yearly_means)
