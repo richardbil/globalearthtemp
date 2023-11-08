@@ -5,7 +5,7 @@ There are also no standarts here to satisfy any demands for readibility or anyth
 
 ## The Data: 
 
-Got it from Kaggle, basically just Temperature Data Worldwide als conclusive as possible, dating back to 1750s, with monthly averages. 
+Got it from Kaggle, basically just Temperature Data Worldwide as conclusive as possible, dating back to 1750s, with monthly averages. 
 
 ## What we want to do:
 

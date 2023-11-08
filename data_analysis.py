@@ -45,7 +45,14 @@ global_temp_country.to_csv('cleaned_data_country.csv', index=False)
 
 country_cleaned = pd.read_csv('/home/richard/Documents/Projects/globalearthtemp/cleaned_data_country.csv')
 
-country_cleaned['Date'] = pd.to_datetime(country_cleaned['Date'])
-country_cleaned['year'] = country_cleaned['Date'].dt.year
-yearly_means = country_cleaned.groupby(['Country', 'year'])['AverageTemperature'].mean().reset_index()
-print(yearly_means)
+# okay lets get the average temp of each countrys
+countries = np.unique(country_cleaned['Country'])
+mean_temp = []
+for country in countries:
+	mean_temp.append(country_cleaned[country_cleaned['Country'] == country]['AverageTemperature'].mean())
+print(mean_temp)
+
+
+biggest_difference_temp = []
+for country in countries:
+	biggest_difference_temp.append(country_cleaned[country_cleaned['Country'] == country]
