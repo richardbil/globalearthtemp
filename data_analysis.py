@@ -14,7 +14,7 @@ print(global_temp_country.shape)
 print(global_temp_country.dtypes)
 
 #So, first we probably want to clean the data and delete the countrys where too much data is missing
-# first, well differentiate between numeric and non numeric cols 
+#At first, well differentiate between numeric and non numeric cols 
 
 numeric_cols = global_temp_country.select_dtypes(include=['number']).columns
 print('Numeric is '+numeric_cols)
