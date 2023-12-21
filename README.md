@@ -1,7 +1,7 @@
 # Global Earth Temperature Data Analysis
 
 So this is basically just some playing around, there is no claim to meet demands to completeness or scientific rigor or whatever else.
-There are also no standarts here to satisfy any demands for readibility or anything else that brings comfort to hypothetical reades, so.. 
+There are also no standarts here to satisfy any demands for readibility or anything else that brings comfort to hypothetical reades, or whatever..
 
 ## The Data: 
 
