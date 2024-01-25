@@ -29,7 +29,7 @@ print(without_NaN.shape)
 
 
 
-
+blabal
 
 #So, first we probably want to clean the data and delete the countrys where too much data is missing
 #At first, well differentiate between numeric and non numeric cols 
