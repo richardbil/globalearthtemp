@@ -26,7 +26,7 @@ I didnt change the names of the data sheets or variables, because that way every
 3. Wrapping it up by writing a blogpost about it, including some of the code, the visuals and some other fancy stuff 
 
 
-PS.: I donct remember anything about time series analysis, so ill have to read up on that, only the fancy word heterosekdasticity is still in my mind. 
+PS.: I donct remember anything about time series analysis, so ill have to read up on that, only the fancy word heterosekdasticity is still in my mind. 	
 
 
 
